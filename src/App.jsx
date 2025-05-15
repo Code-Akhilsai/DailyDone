@@ -9,7 +9,7 @@ function App() {
     <>
       <center>
         <h1 className="text-white font-bold font-sans my-7 text-3xl sm:text-4xl xl:my-13">
-          To-Do
+          DailyDone
         </h1>
         <div className="bg-gray-700 min-h-75 w-76 rounded-lg sm:w-100">
           <div className=" flex flex-col items-center sm:flex-row justify-center ">
