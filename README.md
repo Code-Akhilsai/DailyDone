@@ -1,4 +1,4 @@
-# 🧠 React + Zustand To-Do List App
+# 🧠 DailyDone (React + Zustand To-Do List App)
 
 > A modern rewrite of the classic To-Do app — now powered by **Zustand** for global state management!
 
