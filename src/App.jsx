@@ -34,7 +34,7 @@ function App() {
             return (
               <div
                 key={idx}
-                className="flex gap-2 justify-end items-end sm:justify-end w-76 h-10"
+                className="flex gap-2 justify-end items-end sm:justify-end w-76 h-10 md:ml-15"
               >
                 {editIndex === idx ? (
                   <>
@@ -62,11 +62,14 @@ function App() {
                   </>
                 ) : (
                   <>
-                    <h4 className="text-white text-[25px] font-sans ">
-                      {items.tasks}
-                    </h4>
+                    <div className="flex items-center flex-1">
+                      <input type="checkbox" className="mr-3 ml-1.5 w-4 h-4 " />
+                      <h4 className="text-white text-[23px] font-sans">
+                        {items.tasks}
+                      </h4>
+                    </div>
                     <button
-                      className="bg-blue-800 text-white w-18 h-8 rounded-md "
+                      className="bg-blue-800 text-white w-17 h-8 rounded-md "
                       onClick={() => {
                         setEditIndex(idx);
                         setEditValue(item.tasks);
@@ -75,7 +78,7 @@ function App() {
                       Edit
                     </button>
                     <button
-                      className="bg-red-800 text-white w-18 h-8 rounded-md mr-1.5 "
+                      className="bg-red-800 text-white w-17 h-8 rounded-md mr-1.5 "
                       onClick={() => deleteTodo(idx)}
                     >
                       Delete
