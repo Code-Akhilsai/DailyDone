@@ -2,9 +2,18 @@ import "./App.css";
 import useStore from "./store";
 import { useState } from "react";
 function App() {
-  const { Todo, setTodo, tasks, setTask, deleteTodo, editTodo } = useStore();
+  const {
+    Todo,
+    setTodo,
+    tasks,
+    setTask,
+    deleteTodo,
+    editTodo,
+    toggleCompleted,
+  } = useStore();
   const [editIndex, setEditIndex] = useState(null);
   const [editValue, setEditValue] = useState("");
+
   return (
     <>
       <center>
@@ -63,7 +72,12 @@ function App() {
                 ) : (
                   <>
                     <div className="flex items-center flex-1">
-                      <input type="checkbox" className="mr-3 ml-1.5 w-4 h-4 " />
+                      <input
+                        type="checkbox"
+                        className="mr-3 ml-1.5 w-4 h-4 "
+                        checked={items.completed}
+                        onChange={() => toggleCompleted(idx)}
+                      />
                       <h4 className="text-white text-[23px] font-sans">
                         {items.tasks}
                       </h4>

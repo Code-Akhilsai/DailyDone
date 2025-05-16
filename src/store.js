@@ -10,7 +10,10 @@ const useStore = create(
       setTodo: () =>
         set((state) => {
           if (!state.tasks.trim()) return {};
-          return { Todo: [...state.Todo, { tasks: state.tasks }], tasks: "" };
+          return {
+            Todo: [...state.Todo, { tasks: state.tasks, completed: false }],
+            tasks: "",
+          };
         }),
       deleteTodo: (index) =>
         set((state) => ({
@@ -19,12 +22,26 @@ const useStore = create(
       editTodo: (index, newTask) =>
         set((state) => ({
           Todo: state.Todo.map((item, i) =>
-            i === index ? { tasks: newTask } : item
+            i === index ? { ...item, tasks: newTask } : item
+          ),
+        })),
+      toggleCompleted: (index) =>
+        set((state) => ({
+          Todo: state.Todo.map((item, i) =>
+            i === index ? { ...item, completed: !item.completed } : item
           ),
         })),
     }),
     {
       name: "todo-storage", // localStorage key
+      migrate: (persistedState, version) => {
+        if (persistedState?.Todo) {
+          persistedState.Todo = persistedState.Todo.map((item) =>
+            item.completed === undefined ? { ...item, completed: false } : item
+          );
+        }
+        return persistedState;
+      },
     }
   )
 );
